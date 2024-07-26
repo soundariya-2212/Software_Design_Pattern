@@ -14,12 +14,12 @@ function Register()
       };
     
       const avatarStyle = {
-        backgroundColor: 'rgb(128,0,128)',
+        backgroundColor: '#4FC3F7',
       };
     
       const buttonStyle = {
         marginTop: 20, // Adjusted to fit better spacing
-        backgroundColor: 'rgb(128,0,128)',
+        backgroundColor: '#4FC3F7',
         color: '#fff',
         margin:'15px 0', // Ensure text color contrasts with background
       };
@@ -67,7 +67,7 @@ function Register()
                   style={{ marginBottom: 20 }} 
                 />
                 <TextField
-                  id="password"
+                  id="pass"
                   label="Confirm Password"
                   type="password"
                   variant="standard"
