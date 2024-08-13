@@ -13,7 +13,7 @@ function TutorDashboard() {
   return (
     <div style={{ padding: '20px', marginTop: '80px', marginLeft: '-160px' }}>
       <Typography variant="h4" gutterBottom style={{ color: '#3f51b5' }}>
-        Welcome Back, Tutor!
+        Welcome Back!
       </Typography>
       <Typography variant="body1" paragraph>
         Get ready to inspire and make a difference today! Check out the latest updates and opportunities to engage with your students.

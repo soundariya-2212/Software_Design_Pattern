@@ -427,7 +427,7 @@ const Courses = () => {
             <img src={img9} alt="No image" />
           </div>
           <div className='set-text mt-6'>
-            HTML, or HyperText Markup Language, is the standard language used to create and design web pages. It structures content on the web by using various tags and elements to describe headings, paragraphs, links, images, and more. HTML forms the backbone of web content and is essential for web development.
+          Computer graphics is a field of computer science that focuses on the creation, manipulation, and representation of visual images and animations using computers. It encompasses a wide range of techniques and technologies for rendering, displaying, and processing graphical content. 
           </div>
           <div className='ribbon-wrapper-1'>
             <div className='ribbon-1'>Ribbon</div>
@@ -443,7 +443,7 @@ const Courses = () => {
             <img src={img2} alt="No image" />
           </div>
           <div className='set-text mt-6'>
-            HTML, or HyperText Markup Language, is the standard language used to create and design web pages. It structures content on the web by using various tags and elements to describe headings, paragraphs, links, images, and more. HTML forms the backbone of web content and is essential for web development.
+          React is a popular JavaScript library for building user interfaces, particularly single-page applications where you need a responsive and interactive user experience. Developed and maintained by Facebook, React simplifies the process of creating complex UIs by breaking them down into reusable components.
           </div>
           <div className='ribbon-wrapper-2'>
             <div className='ribbon-2'>Ribbon</div>
@@ -459,7 +459,7 @@ const Courses = () => {
             <img src={img1} alt="No image" />
           </div>
           <div className='set-text mt-6'>
-            HTML, or HyperText Markup Language, is the standard language used to create and design web pages. It structures content on the web by using various tags and elements to describe headings, paragraphs, links, images, and more. HTML forms the backbone of web content and is essential for web development.
+          Data analysis is the process of inspecting, cleaning, transforming, and modeling data with the goal of discovering useful information, informing conclusions, and supporting decision-making. It involves a series of steps and techniques to extract insights from data, which can be used to understand trends, patterns, and relationships.
           </div>
           <div className='ribbon-wrapper-3'>
             <div className='ribbon-3'>Ribbon</div>
@@ -475,8 +475,8 @@ const Courses = () => {
             <img src={img3} alt="No image" />
           </div>
           <div className='set-text'>
-            HTML, or HyperText Markup Language, is the standard language used to create and design web pages. It structures content on the web by using various tags and elements to describe headings, paragraphs, links, images, and more. HTML forms the backbone of web content and is essential for web development.
-          </div>
+          jQuery is a fast, small, and feature-rich JavaScript library that simplifies things like HTML document traversal and manipulation, event handling, and animation. It was created by John Resig and released in 2006, and it quickly became popular due to its ease of use and cross-browser compatibility.
+            </div>
           <div className='ribbon-wrapper-4'>
             <div className='ribbon-4'>Ribbon</div>
           </div>
@@ -491,7 +491,7 @@ const Courses = () => {
             <img src={img4} alt="No image" />
           </div>
           <div className='set-text'>
-            HTML, or HyperText Markup Language, is the standard language used to create and design web pages. It structures content on the web by using various tags and elements to describe headings, paragraphs, links, images, and more. HTML forms the backbone of web content and is essential for web development.
+          Gatsby is a React-based open-source framework that helps developers build fast, secure, and modern websites and applications. It uses GraphQL to fetch data from various sources and then generates static HTML pages at build time, which can be served quickly to users.
           </div>
           <div className='ribbon-wrapper-5'>
             <div className='ribbon-5'>Ribbon</div>
@@ -507,7 +507,7 @@ const Courses = () => {
             <img src={img5} alt="No image" />
           </div>
           <div className='set-text'>
-            HTML, or HyperText Markup Language, is the standard language used to create and design web pages. It structures content on the web by using various tags and elements to describe headings, paragraphs, links, images, and more. HTML forms the backbone of web content and is essential for web development.
+          Flutter is an open-source UI framework developed by Google for building natively compiled applications for mobile, web, and desktop from a single codebase. It is known for its ability to create high-performance, visually attractive applications with a smooth and responsive user experience.
           </div>
           <div className='ribbon-wrapper-6'>
             <div className='ribbon-6'>Ribbon</div>
@@ -539,7 +539,7 @@ const Courses = () => {
             <img src={img7} alt="No image" />
           </div>
           <div className='set-text'>
-            HTML, or HyperText Markup Language, is the standard language used to create and design web pages. It structures content on the web by using various tags and elements to describe headings, paragraphs, links, images, and more. HTML forms the backbone of web content and is essential for web development.
+          Visual representation in the context of data analysis and user interface design refers to the use of graphical elements to convey information, insights, or interactions. It plays a crucial role in making complex data and ideas more understandable, accessible, and engaging. Here’s a breakdown of key aspects and types of visual representation.
           </div>
           <div className='ribbon-wrapper-8'>
             <div className='ribbon-8'>Ribbon</div>
@@ -555,7 +555,7 @@ const Courses = () => {
             <img src={img8} alt="No image" />
           </div>
           <div className='set-text'>
-            HTML, or HyperText Markup Language, is the standard language used to create and design web pages. It structures content on the web by using various tags and elements to describe headings, paragraphs, links, images, and more. HTML forms the backbone of web content and is essential for web development.
+          Mobile app development involves creating software applications that run on mobile devices such as smartphones and tablets. The field encompasses various aspects, including design, coding, testing, and deployment. Here’s an overview of the key components and trends in mobile app development.
           </div>
           <div className='ribbon-wrapper-9'>
             <div className='ribbon-9'>Ribbon</div>

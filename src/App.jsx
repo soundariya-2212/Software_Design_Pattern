@@ -83,11 +83,12 @@ const App = () => {
                     <Route path='/tutor/dashboard' element={<TutorDashboard />} />
                 </Route>
 
-                {/* Uncomment if you have a NotFound page */}
-                {/* <Route path='*' element={<NotFound />} /> */}
             </Routes>
         </BrowserRouter>
     );
 };
 
 export default App;
+
+{/* Uncomment if you have a NotFound page */}
+{/* <Route path='*' element={<NotFound />} /> */}
