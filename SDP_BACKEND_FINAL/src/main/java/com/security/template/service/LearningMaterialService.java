@@ -3,7 +3,6 @@ package com.security.template.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.security.template.model.Course;
 import com.security.template.model.LearningMaterial;
 import com.security.template.repo.LearningMaterialRepo;
 
@@ -14,40 +13,48 @@ import java.util.Optional;
 public class LearningMaterialService {
 
     @Autowired
-    private LearningMaterialRepo learningMaterialRepository;
+    private LearningMaterialRepo learningMaterialRepo;
 
-    @Autowired
-    private CourseService courseService;
-
-    public List<LearningMaterial> getAllLearningMaterials() {
-        return learningMaterialRepository.findAll();
+    public void saveMaterial(LearningMaterial learningMaterial) {
+        learningMaterialRepo.save(learningMaterial);
     }
 
-    public Optional<LearningMaterial> getLearningMaterialById(Long id) {
-        return learningMaterialRepository.findById(id);
+    public List<LearningMaterial> findByCourseId(Long courseId) {
+        return learningMaterialRepo.findByCourseId(courseId);
     }
 
-    public LearningMaterial createLearningMaterial(LearningMaterial learning, Long courseID) {
-        Course obj = courseService.getCourseById(courseID);
-        learning.setCourse(obj);
-        return learningMaterialRepository.save(learning);
+
+    public List<LearningMaterial> getAllMaterials() {
+        return learningMaterialRepo.findAll();
     }
 
-    public Optional<LearningMaterial> updateLearningMaterial(Long id, LearningMaterial learningMaterial) {
-        if (learningMaterialRepository.existsById(id)) {
-            learningMaterial.setId(id);
-            return Optional.of(learningMaterialRepository.save(learningMaterial));
-        } else {
-            return Optional.empty();
-        }
+   
+    public Optional<LearningMaterial> getMaterialById(Long id) {
+        return learningMaterialRepo.findById(id);
     }
 
-    public boolean deleteLearningMaterial(Long id) {
-        if (learningMaterialRepository.existsById(id)) {
-            learningMaterialRepository.deleteById(id);
-            return true;
-        } else {
-            return false;
-        }
+   
+    public LearningMaterial createMaterial(LearningMaterial material) {
+        return learningMaterialRepo.save(material);
     }
+
+    public LearningMaterial updateMaterial(Long id, LearningMaterial updatedMaterial) {
+        return learningMaterialRepo.findById(id)
+            .map(material -> {
+                material.setTitle(updatedMaterial.getTitle());
+                material.setUrl(updatedMaterial.getUrl());
+                material.setCourse(updatedMaterial.getCourse());
+                return learningMaterialRepo.save(material);
+            })
+            .orElseThrow(() -> new RuntimeException("Material not found"));
+    }
+
+    
+    public void deleteMaterial(Long id) {
+        learningMaterialRepo.deleteById(id);
+    }
+
+    // public List<LearningMaterial> getAllMaterials() {
+    //     return learningMaterialRepo.findAll();
+    // }
 }

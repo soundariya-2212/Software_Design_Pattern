@@ -17,10 +17,10 @@ public class CourseController {
     @Autowired
     private CourseService courseService;
 
-    @GetMapping
-    public List<Course> getAllCourses() {
-        return courseService.getAllCourses();
-    }
+    // @GetMapping
+    // public List<Course> getAllCourses() {
+    //     return courseService.getAllCourses();
+    // }
 
     @GetMapping("/{id}")
     public ResponseEntity<Course> getCourseById(@PathVariable Long id) {
@@ -32,9 +32,9 @@ public class CourseController {
         }
     }
 
-    @PostMapping("/{userID}")
-    public Course createCourse(@RequestBody Course course, @PathVariable Long userID) {
-        return courseService.createCourse(course, userID);
+    @PostMapping
+    public Course createCourse(@RequestBody Course course) {
+        return courseService.createCourse(course);
     }
 
     @PutMapping("/{id}")
@@ -44,6 +44,17 @@ public class CourseController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteCourse(@PathVariable Long id) {
-        return courseService.deleteCourse(id);
+        boolean isDeleted = courseService.deleteCourse(id);
+        if (isDeleted) {
+            return ResponseEntity.noContent().build(); // Status 204 No Content
+        } else {
+            return ResponseEntity.notFound().build(); // Status 404 Not Found
+        }
+    }
+
+    @GetMapping
+    public ResponseEntity<List<Course>> getCourses() {
+        List<Course> courses = courseService.getCourses();
+        return ResponseEntity.ok(courses);
     }
 }

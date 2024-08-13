@@ -1,54 +1,90 @@
 package com.security.template.service;
 
+
+
 import org.springframework.beans.factory.annotation.Autowired;
-// import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+// import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+// import com.security.template.auth.ChangePasswordRequest;
+// import com.security.template.auth.UserUpdateRequest;
 import com.security.template.model.User;
 import com.security.template.repo.UserRepo;
 
 import java.util.List;
-// import java.util.Optional;
+import java.util.Optional;
 
 @Service
 public class UserService {
 
     @Autowired
-    private UserRepo userRepository;
+    private UserRepo userRepo;
 
-    public List<User> getAllUsers() {
-        return userRepository.findAll();
-    }
+   
 
-    // public ResponseEntity<User> getUserById(Long id) {
-    // Optional<User> user = userRepository.findById(id);
-    // return user.map(ResponseEntity::ok).orElseGet(() ->
-    // ResponseEntity.notFound().build());
-    // }
-
-    public User getUserById(Long id) {
-        return userRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("User not found with id: " + id));
-    }
-
-    public User createUser(User user) {
-        return userRepository.save(user);
-    }
-
-    public ResponseEntity<User> updateUser(Long id, User user) {
-        if (userRepository.existsById(id)) {
-            user.setId(id);
-            return ResponseEntity.ok(userRepository.save(user));
+    // Register a new user
+    public ResponseEntity<User> registerUser(User user) {
+        try {
+            User createdUser = userRepo.save(user);
+            return new ResponseEntity<>(createdUser, HttpStatus.CREATED);
+        } catch (Exception e) {
+            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
-        return ResponseEntity.notFound().build();
     }
 
-    public boolean existsByName(String name) {
-        return userRepository.existsByName(name);
+    // Update an existing user
+    public ResponseEntity<User> updateUser(Long id, User user) {
+        Optional<User> existingUser = userRepo.findById(id);
+        if (existingUser.isPresent()) {
+            user.setId(id);
+            User updatedUser = userRepo.save(user);
+            return new ResponseEntity<>(updatedUser, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+        }
     }
 
-    public void deleteByName(String name) {
-        userRepository.deleteByName(name);
+    // Delete a user
+    public ResponseEntity<HttpStatus> deleteUser(Long id) {
+        try {
+            userRepo.deleteById(id);
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
+
+    // Get all users
+    public ResponseEntity<List<User>> getAllUsers() {
+        try {
+            List<User> users = userRepo.findAll();
+            if (users.isEmpty()) {
+                return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+            }
+            return new ResponseEntity<>(users, HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    // Get a user by ID
+    // public ResponseEntity<User> getUserById(Long id) {
+    //     Optional<User> user = userRepo.findById(id);
+    //     if (user.isPresent()) {
+    //         return new ResponseEntity<>(user.get(), HttpStatus.OK);
+    //     } else {
+    //         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    //     }
+    // }
+    public ResponseEntity<User> getUserById(Long id) {
+        Optional<User> user = userRepo.findById(id);
+        if (user.isPresent()) {
+            return ResponseEntity.ok(user.get());
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
 }

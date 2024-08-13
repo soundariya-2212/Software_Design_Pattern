@@ -1,32 +1,25 @@
 package com.security.template.model;
 
 // import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-// import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 
 @Entity
 public class Enrollment {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    private String status;  
+
     @ManyToOne
-    // @JoinColumn(name = "user_id")
-    @JsonIgnore
     private User user;
 
     @ManyToOne
-    // @JoinColumn(name = "course_id")
-    @JsonIgnore
     private Course course;
-
-    private Boolean isEnrolled;
 
     public Long getId() {
         return id;
@@ -34,6 +27,14 @@ public class Enrollment {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public User getUser() {
@@ -51,13 +52,6 @@ public class Enrollment {
     public void setCourse(Course course) {
         this.course = course;
     }
-
-    public Boolean getIsEnrolled() {
-        return isEnrolled;
-    }
-
-    public void setIsEnrolled(Boolean isEnrolled) {
-        this.isEnrolled = isEnrolled;
-    }
+    
 
 }

@@ -1,6 +1,6 @@
 package com.security.template.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+// import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -16,21 +16,19 @@ public class LearningMaterial {
     private Long id;
 
     private String title;
-    private String type;
     private String url;
 
     @ManyToOne
     @JoinColumn(name = "course_id")
-    @JsonIgnore
+    // @JsonIgnore
     private Course course;
 
     public LearningMaterial() {
     }
 
-    public LearningMaterial(Long id, String title, String type, String url, Course course) {
+    public LearningMaterial(Long id, String title, String url, Course course) {
         this.id = id;
         this.title = title;
-        this.type = type;
         this.url = url;
         this.course = course;
     }
@@ -49,14 +47,6 @@ public class LearningMaterial {
 
     public void setTitle(String title) {
         this.title = title;
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
     }
 
     public String getUrl() {

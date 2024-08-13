@@ -1,7 +1,4 @@
 package com.security.template.auth;
-
-
-
 import com.security.template.enums.Role;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -16,4 +13,7 @@ public class AuthenticationResponse {
 
     private String token;
     private Role role;
+    private String message;
+    private Long id;
+    
 }

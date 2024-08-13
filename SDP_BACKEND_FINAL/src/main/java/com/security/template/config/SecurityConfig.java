@@ -18,7 +18,6 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
-
 import lombok.RequiredArgsConstructor;
 
 @Configuration
@@ -34,8 +33,8 @@ public class SecurityConfig {
         private AuthenticationProvider authenticationProvider;
 
         public static final List<String> HEADERS = Arrays.asList("Authorization", "Content-Type");
-        public static final List<String> METHODS = Arrays.asList("GET", "POST", "PUT", "DELETE");
-        public static final List<String> ORIGINS = Arrays.asList("http://localhost:3000");
+        public static final List<String> METHODS = Arrays.asList("GET", "POST", "PUT", "DELETE","OPTIONS");
+        public static final List<String> ORIGINS = Arrays.asList("http://localhost:5173");
 
         @Bean
         public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {

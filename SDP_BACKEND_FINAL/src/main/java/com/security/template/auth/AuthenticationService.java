@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class AuthenticationService {
 
+
     private final UserRepo userRepo;
     private final PasswordEncoder passwordEncoder;
     private final JwtService jwtService;
@@ -22,7 +23,7 @@ public class AuthenticationService {
     private final TokenRepo tokenRepo;
 
     public AuthenticationResponse register(RegisterRequest request) {
-        var user = User.builder()
+        var user  = User.builder()
                 .name(request.getName())
                 .email(request.getEmail())
                 .password(passwordEncoder.encode(request.getPassword()))
@@ -39,14 +40,18 @@ public class AuthenticationService {
         authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
                         request.getEmail(),
-                        request.getPassword()));
-        var user = userRepo.findByEmail(request.getEmail()).orElseThrow();
+                        request.getPassword()
+                )
+        );
+        var user = userRepo.findByEmail(request.getEmail());
         var jwtToken = jwtService.generateToken(user);
         revokeAllUserTokens(user);
         saveUserToken(user, jwtToken);
         return AuthenticationResponse.builder()
                 .token(jwtToken)
+                .message("User registered successfully.") 
                 .role(user.getRole())
+                .id(user.getId())
                 .build();
 
     }
@@ -69,8 +74,9 @@ public class AuthenticationService {
 
     public void logout(String username) {
         System.out.println("Logout Functionality Called");
-        var user = userRepo.findByEmail(username).orElseThrow();
+        var user = userRepo.findByEmail(username);
         revokeAllUserTokens(user);
     }
+
 
 }

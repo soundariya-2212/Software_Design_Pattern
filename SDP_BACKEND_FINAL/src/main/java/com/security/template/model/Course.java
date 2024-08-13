@@ -6,7 +6,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 // import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+// import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import java.util.List;
 
@@ -24,11 +24,11 @@ public class Course {
     private String schedule;
     private String prerequisites;
     private boolean isApproved = false;
-    private float rating;
+    // private float rating;
 
-    @ManyToOne
-    @JsonIgnore
-    private User user;
+    // @ManyToOne
+    // @JsonIgnore
+    // private User user;
 
     @OneToMany(mappedBy = "course")
     @JsonIgnore
@@ -54,7 +54,7 @@ public class Course {
     }
 
     public Course(Long id, String title, String category, String difficultyLevel, String syllabus, String schedule,
-            String prerequisites, boolean isApproved, float rating, User user, List<Enrollment> enrollments,
+            String prerequisites, boolean isApproved,List<Enrollment> enrollments,
             List<LearningMaterial> learningMaterials, List<Assignment> assignments, List<SubModule> subModules,
             List<CourseRating> ratings) {
         this.id = id;
@@ -65,8 +65,6 @@ public class Course {
         this.schedule = schedule;
         this.prerequisites = prerequisites;
         this.isApproved = isApproved;
-        this.rating = rating;
-        this.user = user;
         this.enrollments = enrollments;
         this.learningMaterials = learningMaterials;
         this.assignments = assignments;
@@ -138,21 +136,21 @@ public class Course {
         this.isApproved = isApproved;
     }
 
-    public float getRating() {
-        return rating;
-    }
+    // public float getRating() {
+    //     return rating;
+    // }
 
-    public void setRating(float rating) {
-        this.rating = rating;
-    }
+    // public void setRating(float rating) {
+    //     this.rating = rating;
+    // }
 
-    public User getUser() {
-        return user;
-    }
+    // public User getUser() {
+    //     return user;
+    // }
 
-    public void setUser(User user) {
-        this.user = user;
-    }
+    // public void setUser(User user) {
+    //     this.user = user;
+    // }
 
     public List<Enrollment> getEnrollments() {
         return enrollments;

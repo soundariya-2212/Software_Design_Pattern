@@ -11,7 +11,7 @@ import org.springframework.security.config.annotation.authentication.configurati
 // import org.springframework.security.core.session.SessionRegistry;
 // import org.springframework.security.core.session.SessionRegistryImpl;
 import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
+// import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
@@ -23,7 +23,7 @@ public class ApplicationConfig {
 
     @Bean
     public UserDetailsService userDetailsService() {
-        return username -> userRepo.findByEmail(username).orElseThrow(() -> new UsernameNotFoundException(username));
+        return username -> userRepo.findByEmail(username);
     }
 
     @Bean
